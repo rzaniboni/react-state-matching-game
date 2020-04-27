@@ -1,23 +1,31 @@
+// @ts-nocheck
 import React, { Component } from 'react';
-import OptionsPanel from '../OptionsPanel'
-import Board from '../Board'
+import OptionsPanel from '../OptionsPanel';
+import Board from '../Board';
 
 import './App.css';
 
-class App extends Component{
+class App extends Component {
+  constructor(props) {
+    super(props);
 
+    this.setState({
+      numTiles: 36,
+      playing: false,
+      previousTileIndex: null,
+      tiles: [],
+      toBeCleared: null,
+    });
+  }
   render() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        Turbo-Matcher
-      </header>
-        <OptionsPanel />
-        <Board />
-      }
-    </div>
-  );
-
+    const { playing, numTiles } = this.state;
+    return (
+      <div className="App">
+        <header className="App-header">Turbo-Matcher</header>
+        <OptionsPanel playing={playing} numTiles={numTiles} />
+        <Board numTiles={numTiles} />}
+      </div>
+    );
   }
 }
 
